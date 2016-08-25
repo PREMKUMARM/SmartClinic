@@ -6,6 +6,7 @@ import { Splashscreen, StatusBar } from 'ionic-native';
 import { AccountPage } from './pages/account/account';
 import { ConferenceData } from './providers/conference-data';
 import { LoginPage } from './pages/login/login';
+import { HomePage } from './pages/homepage/homepage';
 import { SignupPage } from './pages/signup/signup';
 import { TabsPage } from './pages/tabs/tabs';
 import { TutorialPage } from './pages/tutorial/tutorial';

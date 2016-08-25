@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
+import { HomePage } from '../homepage/homepage';
 import { UserData } from '../../providers/user-data';
 
 
@@ -20,8 +21,9 @@ export class LoginPage {
     this.submitted = true;
 
     if (form.valid) {
+    //  alert(this.login.username);
       this.userData.login(this.login.username);
-      this.navCtrl.push(TabsPage);
+      this.navCtrl.push(HomePage);
     }
   }
 

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>HomePage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+<ion-card class="">
+
+    <ion-card-header>
+      
+    </ion-card-header>
+
+    <ion-card-content class="outer-content">
+     <center>
+     Track Token
+     </center>
+    </ion-card-content>
+
+    <ion-item>
+     <ion-col>
+          <button (click)="trackToken()" type="button" primary block>Track Token</button>
+     </ion-col>
+    </ion-item>
+
+  </ion-card>
+  <ion-card class="">
+
+    <ion-card-header>
+      
+    </ion-card-header>
+
+    <ion-card-content class="outer-content">
+    <center>
+     Book new Token
+    </center>
+    </ion-card-content>
+
+    <ion-item>
+     <ion-col>
+          <button (click)="createToken()" type="button" primary block>New Token</button>
+        </ion-col>
+    </ion-item>
+
+  </ion-card>
+  
+  <ion-card class="">
+
+    <ion-card-header>
+      
+    </ion-card-header>
+
+    <ion-card-content class="outer-content">
+    <center>
+     Delete Token
+    </center>
+    </ion-card-content>
+
+    <ion-item>
+     <ion-col>
+          <button (click)="deleteToken()" type="button" primary block>Delete Token</button>
+        </ion-col>
+    </ion-item>
+
+  </ion-card>
+</ion-content>
