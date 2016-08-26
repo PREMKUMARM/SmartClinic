@@ -10964,11 +10964,11 @@ body {
   border-radius: 50%; }
 
 .login-page .logo {
-  min-height: 250px;
+  min-height: 300px;
   text-align: center; }
 
 .login-page .logo img {
-  max-width: 150px; }
+  max-width: 250px; }
 
 .login-page .loginContent {
   width: 100%;

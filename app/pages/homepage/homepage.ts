@@ -1,15 +1,24 @@
 import { Component } from '@angular/core';
-
-
-import { NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   templateUrl: 'build/pages/homepage/homepage.html'
 })
 export class HomePage {
-mySelectedIndex: number;
+constructor(public navCtrl: NavController) { }
 
-  constructor(navParams: NavParams) {
-    this.mySelectedIndex = navParams.data.tabIndex || 0;
-  }
+
+createToken() {
+    this.navCtrl.push(TabsPage);
+}
+
+deleteToken() {
+   // this.navCtrl.push(TabsPage);
+}
+
+trackToken() {
+    //this.navCtrl.push(TabsPage);
+}
+
 }

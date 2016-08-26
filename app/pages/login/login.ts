@@ -23,11 +23,15 @@ export class LoginPage {
     if (form.valid) {
     //  alert(this.login.username);
       this.userData.login(this.login.username);
-      this.navCtrl.push(HomePage);
+      alert("Successfully logged in..");
     }
   }
 
   onSignup() {
     this.navCtrl.push(SignupPage);
+  }
+
+  asPublic(){    
+    this.navCtrl.push(HomePage);
   }
 }

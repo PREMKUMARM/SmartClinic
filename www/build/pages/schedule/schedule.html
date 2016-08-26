@@ -6,18 +6,19 @@
 
     <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
       <ion-segment-button value="all">
-        All
+        Schedule
       </ion-segment-button>
-      <ion-segment-button value="favorites">
+      <!--<ion-segment-button value="favorites">
         Favorites
-      </ion-segment-button>
+      </ion-segment-button>-->
     </ion-segment>
 
-    <ion-buttons end>
+    <!--<ion-buttons end>
       <button (click)="presentFilter()">
         <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons>-->
+    
   </ion-navbar>
 
   <ion-toolbar no-border-top>
@@ -31,8 +32,21 @@
 
 <ion-content>
   <ion-list #scheduleList [hidden]="shownSessions === 0">
-
-    <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
+    <br><br><br>
+    
+    <ion-item>
+       <center>
+          SCHEDULE APPOINTMENT <br>
+          &<br>
+          CREATE TOKEN
+    </center>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="calendar" item-left></ion-icon>
+        <ion-label>Appointment Date</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY"></ion-datetime>
+      </ion-item>
+  <!--  <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
 
       <ion-item-divider sticky>
         {{group.time}}
@@ -60,7 +74,7 @@
 
       </ion-item-sliding>
 
-    </ion-item-group>
+    </ion-item-group>-->
 
   </ion-list>
 

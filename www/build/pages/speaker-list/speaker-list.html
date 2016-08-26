@@ -1,11 +1,34 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar no-border-bottom>
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Speakers</ion-title>
+
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+      <ion-segment-button value="all">
+        Doctors
+      </ion-segment-button>
+      <ion-segment-button value="favorites">
+        Clinics
+      </ion-segment-button>
+    </ion-segment>
+
+    <!--<ion-buttons end>
+      <button (click)="presentFilter()">
+        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+      </button>
+    </ion-buttons>-->
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar primary
+                   [(ngModel)]="queryText"
+                   (ionInput)="updateSchedule()"
+                   placeholder="Search Doctor">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
+
 
 <ion-content class="outer-content speaker-list">
   <ion-card *ngFor="let speaker of speakers" class="speaker">

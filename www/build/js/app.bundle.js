@@ -29,7 +29,7 @@ var ConferenceApp = (function () {
         // the login page disables the left menu
         this.appPages = [
             { title: 'Schedule', component: tabs_1.TabsPage, icon: 'calendar' },
-            { title: 'Speakers', component: tabs_1.TabsPage, index: 1, icon: 'contacts' },
+            { title: 'Doctors', component: tabs_1.TabsPage, index: 1, icon: 'contacts' },
             { title: 'Map', component: tabs_1.TabsPage, index: 2, icon: 'map' },
             { title: 'About', component: tabs_1.TabsPage, index: 3, icon: 'information-circle' },
         ];
@@ -243,20 +243,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
+var tabs_1 = require('../tabs/tabs');
 var HomePage = (function () {
-    function HomePage(navParams) {
-        this.mySelectedIndex = navParams.data.tabIndex || 0;
+    function HomePage(navCtrl) {
+        this.navCtrl = navCtrl;
     }
+    HomePage.prototype.createToken = function () {
+        this.navCtrl.push(tabs_1.TabsPage);
+    };
+    HomePage.prototype.deleteToken = function () {
+        // this.navCtrl.push(TabsPage);
+    };
+    HomePage.prototype.trackToken = function () {
+        //this.navCtrl.push(TabsPage);
+    };
     HomePage = __decorate([
         core_1.Component({
             templateUrl: 'build/pages/homepage/homepage.html'
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavParams])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController])
     ], HomePage);
     return HomePage;
 }());
 exports.HomePage = HomePage;
-},{"@angular/core":163,"ionic-angular":477}],5:[function(require,module,exports){
+},{"../tabs/tabs":13,"@angular/core":163,"ionic-angular":477}],5:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -284,11 +294,14 @@ var LoginPage = (function () {
         if (form.valid) {
             //  alert(this.login.username);
             this.userData.login(this.login.username);
-            this.navCtrl.push(homepage_1.HomePage);
+            alert("Successfully logged in..");
         }
     };
     LoginPage.prototype.onSignup = function () {
         this.navCtrl.push(signup_1.SignupPage);
+    };
+    LoginPage.prototype.asPublic = function () {
+        this.navCtrl.push(homepage_1.HomePage);
     };
     LoginPage = __decorate([
         core_1.Component({

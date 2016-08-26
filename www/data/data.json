@@ -219,10 +219,10 @@
 
   "speakers": [
     {
-      "name": "Burt Bear",
+      "name": "Dr. Thomas",
       "profilePic": "img/speakers/bear.jpg",
       "twitter": "ionicframework",
-      "about": "Burt is a Bear.",
+      "about": "ABC CLINIC",
       "location": "Everywhere"
     },
     {
