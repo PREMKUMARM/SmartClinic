@@ -244,9 +244,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
 var tabs_1 = require('../tabs/tabs');
+var login_1 = require('../login/login');
+var user_data_1 = require('../../providers/user-data');
 var HomePage = (function () {
-    function HomePage(navCtrl) {
+    function HomePage(navCtrl, userData) {
         this.navCtrl = navCtrl;
+        this.userData = userData;
     }
     HomePage.prototype.createToken = function () {
         this.navCtrl.push(tabs_1.TabsPage);
@@ -255,16 +258,21 @@ var HomePage = (function () {
     };
     HomePage.prototype.trackToken = function () {
     };
+    HomePage.prototype.dismiss = function () {
+        this.userData.login("");
+        alert("Successfully logged out..");
+        this.navCtrl.push(login_1.LoginPage);
+    };
     HomePage = __decorate([
         core_1.Component({
             templateUrl: 'build/pages/homepage/homepage.html'
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData])
     ], HomePage);
     return HomePage;
 }());
 exports.HomePage = HomePage;
-},{"../tabs/tabs":13,"@angular/core":164,"ionic-angular":478}],5:[function(require,module,exports){
+},{"../../providers/user-data":16,"../login/login":5,"../tabs/tabs":13,"@angular/core":164,"ionic-angular":478}],5:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
