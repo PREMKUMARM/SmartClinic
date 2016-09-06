@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController,LoadingController,ToastController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
@@ -17,15 +17,30 @@ export class LoginPage {
   submitted = false;
   public userDetails: any;
 
-  constructor(public navCtrl: NavController, public userData: UserData,public auth: LoginService) { }
+  constructor(public navCtrl: NavController, public userData: UserData,public auth: LoginService,public loadingCtrl: LoadingController,public toastCtrl: ToastController) { }
+ 
+   
 
   onLogin(form) {
     this.submitted = true;
 
     if (form.valid) {
+      
      // alert(this.login.username);
      // alert(this.login.password);
       this.userData.login(this.login.username);
+      //For loader implementation
+       let loader = this.loadingCtrl.create({
+      content: "Logging in...",      
+      dismissOnPageChange: true
+       })
+       //For toaster implementaion
+        let toast = this.toastCtrl.create({
+      message: 'Successfully logged in',
+      duration: 1500
+    });
+   
+      loader.present();
       this.auth.authenticateUser().subscribe
      (data => {
 /*    this.userDetails = data;  
@@ -43,10 +58,13 @@ export class LoginPage {
 
     if((this.login.username==this.userDetails[0].Username)&&(this.login.password==this.userDetails[0].Password))
     {
-      alert("Successfully logged in..");
+      loader.dismiss();
+      toast.present();
+      //alert("Successfully logged in..");
       this.navCtrl.push(HomePage);
     }
     else{
+       loader.dismiss();
       alert("Incorrect login credentials..");
     }
   })

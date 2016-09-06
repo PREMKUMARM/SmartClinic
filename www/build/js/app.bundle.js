@@ -247,9 +247,11 @@ var tabs_1 = require('../tabs/tabs');
 var login_1 = require('../login/login');
 var user_data_1 = require('../../providers/user-data');
 var HomePage = (function () {
-    function HomePage(navCtrl, userData) {
+    function HomePage(navCtrl, userData, loadingCtrl, toastCtrl) {
         this.navCtrl = navCtrl;
         this.userData = userData;
+        this.loadingCtrl = loadingCtrl;
+        this.toastCtrl = toastCtrl;
     }
     HomePage.prototype.createToken = function () {
         this.navCtrl.push(tabs_1.TabsPage);
@@ -259,15 +261,27 @@ var HomePage = (function () {
     HomePage.prototype.trackToken = function () {
     };
     HomePage.prototype.dismiss = function () {
+        var loader1 = this.loadingCtrl.create({
+            content: "Logging out...",
+            duration: 3000,
+            dismissOnPageChange: true
+        });
+        //For toaster implementaion
+        var toast1 = this.toastCtrl.create({
+            message: 'Successfully logged out',
+            duration: 1500
+        });
         this.userData.login("");
-        alert("Successfully logged out..");
+        //alert("Successfully logged out..")
+        loader1.present();
         this.navCtrl.push(login_1.LoginPage);
+        toast1.present();
     };
     HomePage = __decorate([
         core_1.Component({
             templateUrl: 'build/pages/homepage/homepage.html'
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData, ionic_angular_1.LoadingController, ionic_angular_1.ToastController])
     ], HomePage);
     return HomePage;
 }());
@@ -290,10 +304,12 @@ var homepage_1 = require('../homepage/homepage');
 var user_data_1 = require('../../providers/user-data');
 var login_service_1 = require('../../providers/login-service/login-service');
 var LoginPage = (function () {
-    function LoginPage(navCtrl, userData, auth) {
+    function LoginPage(navCtrl, userData, auth, loadingCtrl, toastCtrl) {
         this.navCtrl = navCtrl;
         this.userData = userData;
         this.auth = auth;
+        this.loadingCtrl = loadingCtrl;
+        this.toastCtrl = toastCtrl;
         this.login = {};
         this.submitted = false;
     }
@@ -304,6 +320,17 @@ var LoginPage = (function () {
             // alert(this.login.username);
             // alert(this.login.password);
             this.userData.login(this.login.username);
+            //For loader implementation
+            var loader_1 = this.loadingCtrl.create({
+                content: "Logging in...",
+                dismissOnPageChange: true
+            });
+            //For toaster implementaion
+            var toast_1 = this.toastCtrl.create({
+                message: 'Successfully logged in',
+                duration: 1500
+            });
+            loader_1.present();
             this.auth.authenticateUser().subscribe(function (data) {
                 /*    this.userDetails = data;
                      alert("JSON data:"+JSON.stringify(data));
@@ -318,10 +345,13 @@ var LoginPage = (function () {
                 console.log("hii->" + _this.userDetails[0].Username);
                 console.log("hii->" + _this.userDetails[0].Password);
                 if ((_this.login.username == _this.userDetails[0].Username) && (_this.login.password == _this.userDetails[0].Password)) {
-                    alert("Successfully logged in..");
+                    loader_1.dismiss();
+                    toast_1.present();
+                    //alert("Successfully logged in..");
                     _this.navCtrl.push(homepage_1.HomePage);
                 }
                 else {
+                    loader_1.dismiss();
                     alert("Incorrect login credentials..");
                 }
             });
@@ -338,7 +368,7 @@ var LoginPage = (function () {
             templateUrl: 'build/pages/login/login.html',
             providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData, login_service_1.LoginService])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, user_data_1.UserData, login_service_1.LoginService, ionic_angular_1.LoadingController, ionic_angular_1.ToastController])
     ], LoginPage);
     return LoginPage;
 }());
