@@ -293,20 +293,30 @@ var LoginPage = (function () {
         var _this = this;
         this.submitted = true;
         if (form.valid) {
-            alert(this.login.username);
-            alert(this.login.password);
+            // alert(this.login.username);
+            // alert(this.login.password);
             this.userData.login(this.login.username);
             this.auth.authenticateUser().subscribe(function (data) {
-                _this.userDetails = data;
-                console.log("JSON data:" + JSON.stringify(data));
-                //console.log("JSON data123456:"+data);
-                var t = [];
-                t = _this.userDetails._body;
-                console.log("hii->" + _this.userDetails._body);
-                console.log("Username:" + _this.userDetails._body["Username"]);
-                console.log("Password:" + (t[0].Password));
+                /*    this.userDetails = data;
+                     alert("JSON data:"+JSON.stringify(data));
+                        //console.log("JSON data123456:"+data);
+                        var t=[];
+                        t=this.userDetails._body;
+                        console.log("hii->"+this.userDetails._body);
+                    console.log("Username:"+this.userDetails._body["Username"]);
+                    console.log("Password:"+(t[0].Password));*/
+                console.log(data.json());
+                _this.userDetails = data.json();
+                console.log("hii->" + _this.userDetails[1].Username);
+                console.log("hii->" + _this.userDetails[1].Password);
+                if ((_this.login.username == _this.userDetails[1].Username) && (_this.login.password == _this.userDetails[1].Password)) {
+                    alert("Successfully logged in..");
+                    _this.navCtrl.push(homepage_1.HomePage);
+                }
+                else {
+                    alert("Incorrect login credentials..");
+                }
             });
-            alert("Successfully logged in..");
         }
     };
     LoginPage.prototype.onSignup = function () {
