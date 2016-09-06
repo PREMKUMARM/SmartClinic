@@ -307,9 +307,9 @@ var LoginPage = (function () {
                     console.log("Password:"+(t[0].Password));*/
                 console.log(data.json());
                 _this.userDetails = data.json();
-                console.log("hii->" + _this.userDetails[1].Username);
-                console.log("hii->" + _this.userDetails[1].Password);
-                if ((_this.login.username == _this.userDetails[1].Username) && (_this.login.password == _this.userDetails[1].Password)) {
+                console.log("hii->" + _this.userDetails[0].Username);
+                console.log("hii->" + _this.userDetails[0].Password);
+                if ((_this.login.username == _this.userDetails[0].Username) && (_this.login.password == _this.userDetails[0].Password)) {
                     alert("Successfully logged in..");
                     _this.navCtrl.push(homepage_1.HomePage);
                 }

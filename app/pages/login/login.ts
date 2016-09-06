@@ -38,10 +38,10 @@ export class LoginPage {
     console.log("Password:"+(t[0].Password));*/
     console.log(data.json())
     this.userDetails=data.json();
-    console.log("hii->"+this.userDetails[1].Username);
-    console.log("hii->"+this.userDetails[1].Password);
+    console.log("hii->"+this.userDetails[0].Username);
+    console.log("hii->"+this.userDetails[0].Password);
 
-    if((this.login.username==this.userDetails[1].Username)&&(this.login.password==this.userDetails[1].Password))
+    if((this.login.username==this.userDetails[0].Username)&&(this.login.password==this.userDetails[0].Password))
     {
       alert("Successfully logged in..");
       this.navCtrl.push(HomePage);
@@ -49,11 +49,6 @@ export class LoginPage {
     else{
       alert("Incorrect login credentials..");
     }
-
-
-
-
-
   })
     
     }
