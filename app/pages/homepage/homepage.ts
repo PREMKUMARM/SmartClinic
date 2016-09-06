@@ -14,11 +14,11 @@ createToken() {
 }
 
 deleteToken() {
-   // this.navCtrl.push(TabsPage);
+ 
 }
 
 trackToken() {
-    //this.navCtrl.push(TabsPage);
+    
 }
 
 }

@@ -23,21 +23,27 @@ export class LoginPage {
     this.submitted = true;
 
     if (form.valid) {
-    //  alert(this.login.username);
+      alert(this.login.username);
+      alert(this.login.password);
       this.userData.login(this.login.username);
       this.auth.authenticateUser().subscribe
      (data => {
-    this.userDetails = data;
-    alert(JSON.stringify(this.userDetails));
-  });
-      alert("Successfully logged in..");
+    this.userDetails = data;  
+     alert("JSON data:"+JSON.stringify(data));
+        //console.log("JSON data123456:"+data);
+        var t=[];
+        t=this.userDetails._body;
+        console.log("hii->"+this.userDetails._body);
+    console.log("Username:"+this.userDetails._body["Username"]);
+    console.log("Password:"+(t[0].Password));
+  })
+     alert("Successfully logged in..");
     }
   }
 
   onSignup() {
     this.navCtrl.push(SignupPage);
   }
-
   asPublic(){    
     this.navCtrl.push(HomePage);
   }

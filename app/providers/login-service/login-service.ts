@@ -13,7 +13,7 @@ export class LoginService {
 
   constructor(private http: Http) {} 
    authenticateUser(){
-    return this.http.get('http://localhost:3000/scs/auth');
+    return this.http.get('http://restapi-skyhorse.rhcloud.com:80/api/auth');
    }
 }
   

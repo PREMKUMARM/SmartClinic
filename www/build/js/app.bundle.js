@@ -252,10 +252,8 @@ var HomePage = (function () {
         this.navCtrl.push(tabs_1.TabsPage);
     };
     HomePage.prototype.deleteToken = function () {
-        // this.navCtrl.push(TabsPage);
     };
     HomePage.prototype.trackToken = function () {
-        //this.navCtrl.push(TabsPage);
     };
     HomePage = __decorate([
         core_1.Component({
@@ -295,11 +293,18 @@ var LoginPage = (function () {
         var _this = this;
         this.submitted = true;
         if (form.valid) {
-            //  alert(this.login.username);
+            alert(this.login.username);
+            alert(this.login.password);
             this.userData.login(this.login.username);
             this.auth.authenticateUser().subscribe(function (data) {
                 _this.userDetails = data;
-                alert(JSON.stringify(_this.userDetails));
+                console.log("JSON data:" + JSON.stringify(data));
+                //console.log("JSON data123456:"+data);
+                var t = [];
+                t = _this.userDetails._body;
+                console.log("hii->" + _this.userDetails._body);
+                console.log("Username:" + _this.userDetails._body["Username"]);
+                console.log("Password:" + (t[0].Password));
             });
             alert("Successfully logged in..");
         }
@@ -953,7 +958,7 @@ var LoginService = (function () {
         this.http = http;
     }
     LoginService.prototype.authenticateUser = function () {
-        return this.http.get('http://localhost:3000/scs/auth');
+        return this.http.get('http://restapi-skyhorse.rhcloud.com:80/api/auth');
     };
     LoginService = __decorate([
         core_1.Injectable(), 
