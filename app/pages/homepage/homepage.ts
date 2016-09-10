@@ -37,7 +37,7 @@ this.userData.login("");
 //alert("Successfully logged out..")
  loader1.present();
 this.navCtrl.push(LoginPage);
- toast1.present();
+ //toast1.present();
 }
 
 }
